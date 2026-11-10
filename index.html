@@ -12,7 +12,7 @@ nav button{flex:1;border:0;background:none;color:var(--m);padding:7px 0;font-siz
 button{font:inherit;border-radius:10px;padding:9px 13px;border:1px solid var(--b);background:var(--c);color:var(--t)}button.p{background:var(--p);color:#fff;border-color:var(--p)}
 .row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.tag{font-size:12px;border:1px solid var(--b);border-radius:20px;padding:1px 8px;color:var(--m)}
 input,select,textarea{width:100%;font:inherit;padding:9px;border:1px solid var(--b);border-radius:8px;background:var(--bg);color:var(--t);margin:3px 0 8px}label{font-size:13px;color:var(--m);display:block}
-.m{position:fixed;inset:0;background:#0008;z-index:10;overflow:auto;padding:12px}.mc{background:var(--c);border-radius:14px;padding:14px;max-width:520px;margin:20px auto}
+.mo{position:fixed;inset:0;background:#0008;z-index:10;overflow:auto;padding:12px}.mc{background:var(--c);border-radius:14px;padding:14px;max-width:520px;margin:20px auto}
 .bar{display:flex;align-items:flex-end;gap:3px;height:90px}.bar i{flex:1;background:var(--p);border-radius:3px 3px 0 0;min-height:2px}
 #doc{position:fixed;inset:0;background:#fff;color:#000;overflow:auto;padding:16px;z-index:20;font-size:14px}#doc:empty{display:none}#doc table{width:100%;border-collapse:collapse}#doc td,#doc th{border:1px solid #bbb;padding:6px;text-align:left}
 @media print{body>*:not(#doc){display:none!important}#doc .np{display:none}}
@@ -30,7 +30,7 @@ let V='home',per='m',q='',lm='';
 const paid=d=>S.py.filter(p=>p.d===d.id).reduce((a,p)=>a+p.m,0);
 const st=d=>d.t==='AV'?'Avoir':d.av?'Annulée par avoir':paid(d)>=d.tot?'Payée':paid(d)>0&&today()<=d.ech?'Partielle':today()>d.ech?'En retard':'Non payée';
 const start=p=>{const n=new Date(),y=n.getFullYear(),m=n.getMonth();if(p==='j')return today();if(p==='s'){const d=new Date(n);d.setDate(n.getDate()-((n.getDay()+6)%7));return f(d)}if(p==='m')return f(new Date(y,m,1));if(p==='t')return f(new Date(y,m-m%3,1));return f(new Date(y,0,1))};
-function modal(h){$('#md').innerHTML='<div class=m><div class=mc>'+h+'</div></div>'}const cm=()=>$('#md').innerHTML='';
+function modal(h){$('#md').innerHTML='<div class=mo><div class=mc>'+h+'</div></div>'}const cm=()=>$('#md').innerHTML='';
 function form(title,fs,v,ok,extra=''){modal('<h3>'+title+'</h3><form id=f>'+fs.map(g=>{const x=v[g.k]??g.d??'';let i;
 if(g.o)i='<select name='+g.k+'>'+g.o.map(o=>'<option value="'+E(o[0])+'"'+(String(o[0])===String(x)?' selected':'')+'>'+E(o[1])+'</option>').join('')+'</select>';
 else if(g.t==='area')i='<textarea name='+g.k+' rows=3>'+E(x)+'</textarea>';
